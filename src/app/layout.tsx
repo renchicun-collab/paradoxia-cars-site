@@ -4,16 +4,13 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 
-// Bundled, self-hosted Geist — no runtime Google Fonts fetch.
-// Both define --font-geist-sans / --font-geist-mono used in globals.css.
-
 export const metadata: Metadata = {
-  title: "Paradosxia Cars — The World of the Hypercar",
+  title: "Paradosxia Cars — ハイパーカーの世界",
   description:
-    "A study of the rarest hypercars and ultra-luxury machines on earth — Bugatti, Pagani, Koenigsegg, Ferrari — and the world that surrounds them.",
+    "ブガッティ、パガーニ、ケーニグセグ、フェラーリ。世界で最も希少な車と、それを取り巻く世界を深く掘り下げるメディア。",
   openGraph: {
     title: "Paradosxia Cars",
-    description: "The world of the hypercar.",
+    description: "ハイパーカーの世界へ。",
     type: "website",
   },
 };
@@ -22,7 +19,16 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="ja">
+      <head>
+        {/* Noto Serif JP — 日本語セリフ体。Vercel上でフェッチされます */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}>
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>

@@ -7,19 +7,19 @@ import { SITE } from "@/lib/site";
 
 const posts = [
   {
-    kicker: "Pilgrimage",
-    title: "The holy site where Bugatti, Pagani and Koenigsegg meet",
-    read: "8 min",
+    kicker: "聖地巡礼",
+    title: "ブガッティ、パガーニ、ケーニグセグが集う場所",
+    read: "8分",
   },
   {
-    kicker: "Ownership",
-    title: "What it actually takes to be allocated a hypercar",
-    read: "6 min",
+    kicker: "オーナーシップ",
+    title: "ハイパーカーを手に入れるために本当に必要なこと",
+    read: "6分",
   },
   {
-    kicker: "Engineering",
-    title: "Why the W16 was a monument no one will build again",
-    read: "10 min",
+    kicker: "エンジニアリング",
+    title: "W16エンジンが「二度と作られない記念碑」である理由",
+    read: "10分",
   },
 ];
 
@@ -30,33 +30,28 @@ export default function Articles() {
         <AnimatedSection className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-[42ch]">
             <AnimatedItem>
-              <EyebrowBadge>Latest Articles</EyebrowBadge>
+              <EyebrowBadge>最新記事</EyebrowBadge>
             </AnimatedItem>
             <AnimatedItem>
-              <h2 className="mt-5 text-3xl font-semibold tracking-tighter md:text-5xl">
-                Deep dives, not hot takes.
+              <h2 className="mt-5 text-3xl font-semibold tracking-tight md:text-5xl">
+                深掘り。ホットテイクではなく。
               </h2>
             </AnimatedItem>
             <AnimatedItem>
               <p className="mt-4 text-base leading-relaxed text-[var(--muted)] md:text-lg">
-                Long-form writing on the cars, the culture, and the people who
-                live inside this world.
+                車、文化、そしてこの世界に生きる人々についての長文コンテンツ。
               </p>
             </AnimatedItem>
           </div>
           <AnimatedItem>
             <a
-              href={SITE.blog}
+              href={`https://${SITE.blog}`}
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-1.5 text-sm text-[var(--gold)]"
             >
-              Read the full blog
-              <ArrowUpRight
-                size={15}
-                weight="bold"
-                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
+              ブログをすべて読む
+              <ArrowUpRight size={15} weight="bold" className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </AnimatedItem>
         </AnimatedSection>
@@ -65,7 +60,7 @@ export default function Articles() {
           {posts.map((p) => (
             <AnimatedItem key={p.title}>
               <a
-                href={SITE.blog}
+                href={`https://${SITE.blog}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="card-surface group flex h-full flex-col p-7 transition-transform duration-500 hover:-translate-y-1"
@@ -77,14 +72,8 @@ export default function Articles() {
                   {p.title}
                 </h3>
                 <div className="mt-6 flex items-center justify-between">
-                  <span className="text-xs text-[var(--muted)]">
-                    {p.read} read
-                  </span>
-                  <ArrowUpRight
-                    size={16}
-                    weight="bold"
-                    className="text-[var(--muted)] transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[var(--gold)]"
-                  />
+                  <span className="text-xs text-[var(--muted)]">{p.read}で読める</span>
+                  <ArrowUpRight size={16} weight="bold" className="text-[var(--muted)] transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[var(--gold)]" />
                 </div>
               </a>
             </AnimatedItem>

@@ -5,11 +5,11 @@ import { List, X } from "@phosphor-icons/react";
 import Button from "./Button";
 
 const links = [
-  { label: "Concept", href: "#concept" },
-  { label: "Hypercars", href: "#hypercars" },
-  { label: "Articles", href: "#articles" },
-  { label: "Video", href: "#video" },
-  { label: "Contact", href: "#contact" },
+  { label: "コンセプト", href: "#concept" },
+  { label: "ハイパーカー", href: "#hypercars" },
+  { label: "記事", href: "#articles" },
+  { label: "動画", href: "#video" },
+  { label: "お問い合わせ", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -34,7 +34,7 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 md:px-8">
         <a href="#top" className="flex items-center gap-2">
           <span className="text-sm font-semibold uppercase tracking-[0.32em] text-[var(--foreground)]">
-            Parados<span className="text-gold">x</span>ia
+            Parados<span className="text-[var(--gold)]">x</span>ia
           </span>
         </a>
 
@@ -49,13 +49,13 @@ export default function Navbar() {
             </a>
           ))}
           <Button href="#contact" variant="secondary">
-            Get in touch
+            お問い合わせ
           </Button>
         </div>
 
         <button
           className="text-[var(--foreground)] md:hidden"
-          aria-label="Menu"
+          aria-label="メニュー"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X size={22} /> : <List size={22} />}

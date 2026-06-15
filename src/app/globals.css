@@ -1,39 +1,36 @@
 @import "tailwindcss";
 
 /* ============================================================
-   PARADOSXIA CARS — design tokens
-   Dark / gold adaptation of the neumorphic system.
+   PARADOSXIA CARS — シルバー×黒 デザイントークン
    ============================================================ */
 
 :root {
-  /* Core palette — deep blacks + warm white */
-  --background: #0a0a0b;        /* page background */
-  --surface: #131316;          /* elevated card */
-  --surface-nested: #17171b;   /* nested card */
-  --foreground: #f4f3f0;       /* primary text (warm white) */
-  --muted: #8b8b91;            /* secondary text */
+  /* ベースカラー */
+  --background: #080809;
+  --surface: #111113;
+  --surface-nested: #161618;
+  --foreground: #f0f0f2;
+  --muted: #888892;
   --hairline: rgba(255, 255, 255, 0.07);
 
-  /* Brand gold */
-  --gold: #c9a24b;
-  --gold-light: #e6c878;
-  --gold-deep: #9c7a32;
+  /* シルバーアクセント */
+  --gold: #c0c0cc;          /* メインシルバー */
+  --gold-light: #e8e8f0;    /* ハイライトシルバー */
+  --gold-deep: #7a7a88;     /* ディープシルバー */
 
-  /* Neumorphic shadow — dark variant.
-     6 layered drop shadows for depth + a faint top-edge highlight. */
+  /* ニューモーフィックシャドウ（ダーク版） */
   --card-shadow:
-    0px 0.7px 0.7px -0.67px rgba(0, 0, 0, 0.55),
-    0px 1.8px 1.8px -1.33px rgba(0, 0, 0, 0.52),
-    0px 3.6px 3.6px -2px     rgba(0, 0, 0, 0.48),
-    0px 6.9px 6.9px -2.67px  rgba(0, 0, 0, 0.42),
-    0px 13.6px 13.6px -3.33px rgba(0, 0, 0, 0.35),
-    0px 30px 30px -4px        rgba(0, 0, 0, 0.30),
-    inset 0px 1px 0px 0px     rgba(255, 255, 255, 0.06);
+    0px 0.7px 0.7px -0.67px rgba(0,0,0,.6),
+    0px 1.8px 1.8px -1.33px rgba(0,0,0,.55),
+    0px 3.6px 3.6px -2px    rgba(0,0,0,.50),
+    0px 6.9px 6.9px -2.67px rgba(0,0,0,.44),
+    0px 13.6px 13.6px -3.33px rgba(0,0,0,.36),
+    0px 30px 30px -4px       rgba(0,0,0,.30),
+    inset 0px 1px 0px 0px    rgba(255,255,255,.07);
 
-  /* Gold-glow shadow for accent surfaces */
-  --gold-glow:
-    0px 8px 30px -6px rgba(201, 162, 75, 0.25),
-    inset 0px 1px 0px 0px rgba(230, 200, 120, 0.18);
+  --silver-glow:
+    0px 8px 30px -6px rgba(192,192,204,.20),
+    inset 0px 1px 0px 0px rgba(232,232,240,.15);
 }
 
 @theme inline {
@@ -44,27 +41,28 @@
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
   --color-gold-deep: var(--gold-deep);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-noto-serif-jp);
   --font-mono: var(--font-geist-mono);
 }
 
-* {
-  border-color: var(--hairline);
-}
+* { border-color: var(--hairline); }
 
-html {
-  scroll-behavior: auto; /* Lenis owns scrolling; native smooth would fight it */
-}
+html { scroll-behavior: auto; }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--font-geist-sans), "Noto Serif JP", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ---------- Surfaces ---------- */
+/* 見出し用セリフ体 */
+h1, h2, h3 {
+  font-family: "Noto Serif JP", Georgia, serif;
+}
+
 .card-surface {
   background: var(--surface);
   border-radius: 20px;
@@ -78,10 +76,7 @@ body {
   box-shadow: var(--card-shadow);
 }
 
-/* ---------- Text helpers ---------- */
-.text-gold {
-  color: var(--gold);
-}
+.text-gold { color: var(--gold); }
 
 .gold-gradient-text {
   background: linear-gradient(90deg, var(--gold-light), var(--gold), var(--gold-deep));
@@ -90,15 +85,11 @@ body {
   color: transparent;
 }
 
-.hairline-top {
-  border-top: 1px solid var(--hairline);
-}
+.hairline-top { border-top: 1px solid var(--hairline); }
 
-/* Fine luxury rule */
 .gold-rule {
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
-/* Hide scrollbar but keep scroll (Lenis) */
 ::-webkit-scrollbar { width: 0; height: 0; }

@@ -7,26 +7,26 @@ const cars = [
   {
     marque: "Bugatti",
     model: "La Voiture Noire",
-    note: "One built. A reported €11M. The most expensive new car ever sold.",
+    note: "1台のみ製造。報道では約14億円。史上最高額で売れた新車。",
     spec: "1,479 hp · W16",
   },
   {
     marque: "Pagani",
     model: "Huayra Codalunga",
-    note: "Five examples. A long-tail tribute hand-shaped in Modena.",
+    note: "5台のみ。モデナで職人の手によって生み出されたロングテール。",
     spec: "840 hp · V12",
   },
   {
     marque: "Koenigsegg",
     model: "Jesko Absolut",
-    note: "Engineered for a theoretical top speed beyond 500 km/h.",
+    note: "理論上の最高速度500km/h超を目指して設計されたマシン。",
     spec: "1,600 hp · V8",
   },
   {
     marque: "Rolls-Royce",
     model: "Boat Tail",
-    note: "Three commissions. Coachbuilt. Price never officially confirmed.",
-    spec: "Bespoke · V12",
+    note: "3台のみの特注コーチビルト。価格は非公開のまま。",
+    spec: "ビスポーク · V12",
   },
 ];
 
@@ -36,17 +36,16 @@ export default function FeaturedCars() {
       <div className="mx-auto max-w-[1400px]">
         <AnimatedSection className="mb-14 max-w-[44ch]">
           <AnimatedItem>
-            <EyebrowBadge>Featured Hypercars</EyebrowBadge>
+            <EyebrowBadge>注目のハイパーカー</EyebrowBadge>
           </AnimatedItem>
           <AnimatedItem>
-            <h2 className="mt-5 text-3xl font-semibold tracking-tighter md:text-5xl">
-              Machines measured in single digits.
+            <h2 className="mt-5 text-3xl font-semibold tracking-tight md:text-5xl">
+              台数で語られる、究極の機械たち。
             </h2>
           </AnimatedItem>
           <AnimatedItem>
             <p className="mt-4 text-base leading-relaxed text-[var(--muted)] md:text-lg">
-              Not the fastest list, not the loudest. The rarest — cars whose
-              production runs you can count on one hand.
+              最速でも最大でもなく、最も希少な車だけを。生産台数が片手で収まる、本物の限定車。
             </p>
           </AnimatedItem>
         </AnimatedSection>

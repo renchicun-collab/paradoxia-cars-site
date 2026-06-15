@@ -5,19 +5,19 @@ import EyebrowBadge from "../ui/EyebrowBadge";
 
 const pillars = [
   {
-    k: "Rarity",
-    t: "Single-digit machines",
-    d: "We follow the cars built in ones and fives — the ones almost no one will ever see in person.",
+    k: "希少性",
+    t: "一桁台の生産台数",
+    d: "1台、5台——ほとんどの人が実物を見ることすら叶わない車だけを追います。",
   },
   {
-    k: "Story",
-    t: "The world behind them",
-    d: "Engineering, ownership, obsession. The narratives that make these objects matter.",
+    k: "物語",
+    t: "車の背景にある世界",
+    d: "エンジニアリング、オーナーシップ、執念。スペックシートには載らない物語。",
   },
   {
-    k: "Access",
-    t: "Exclusive, not closed",
-    d: "We open the doors to this world without dimming what makes it extraordinary.",
+    k: "アクセス",
+    t: "排他的だが、閉鎖的ではない",
+    d: "この世界の扉を開きながら、その特別さを損なわないように伝えます。",
   },
 ];
 
@@ -28,19 +28,16 @@ export default function BrandConcept() {
         <AnimatedSection className="grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
           <div>
             <AnimatedItem>
-              <EyebrowBadge>The Concept</EyebrowBadge>
+              <EyebrowBadge>コンセプト</EyebrowBadge>
             </AnimatedItem>
             <AnimatedItem>
-              <h2 className="mt-5 text-3xl font-semibold leading-[1.08] tracking-tighter md:text-5xl">
-                A quiet study of the loudest machines on earth.
+              <h2 className="mt-5 text-3xl font-semibold leading-[1.15] tracking-tight md:text-5xl">
+                地球上で最も<br />騒々しい機械の、<br />静かな考察。
               </h2>
             </AnimatedItem>
             <AnimatedItem>
-              <p className="mt-6 max-w-[52ch] text-base leading-relaxed text-[var(--muted)] md:text-lg">
-                Paradosxia exists for the people who notice the details — the
-                coachbuilt panel, the production number, the story no spec sheet
-                tells. We bring the world of the hypercar into focus with the
-                restraint it deserves.
+              <p className="mt-6 max-w-[48ch] text-base leading-relaxed text-[var(--muted)] md:text-lg">
+                Paradosxiaは、細部に気づく人のために存在します——コーチビルトのパネル、生産番号、どのスペックシートにも載らない物語。ハイパーカーの世界を、それが持つ品格とともに伝えます。
               </p>
             </AnimatedItem>
           </div>
@@ -49,7 +46,7 @@ export default function BrandConcept() {
             {pillars.map((p) => (
               <AnimatedItem key={p.k}>
                 <div className="card-surface flex items-start gap-5 p-6">
-                  <span className="font-mono text-xs uppercase tracking-widest text-[var(--gold)]">
+                  <span className="font-mono text-xs uppercase tracking-widest text-[var(--gold)] shrink-0 pt-0.5">
                     {p.k}
                   </span>
                   <div className="flex-1">

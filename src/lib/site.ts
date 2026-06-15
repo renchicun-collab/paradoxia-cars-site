@@ -1,8 +1,11 @@
 export const SITE = {
   name: "Paradosxia Cars",
-  tagline: "The world of the hypercar.",
+  tagline: "ハイパーカーの世界へ。",
   blog: "https://renchicun4.com",
   email: "hello@paradosxia.com",
-  tiktok: "https://www.tiktok.com/@paradosxia",
+  tiktokHandle: "paradoxia.cars",
+  tiktokVideos: [] as string[],
   splineScene: "https://prod.spline.design/OlkR9onG89bHQrUa/scene.splinecode",
 } as const;
+
+export const tiktokUrl = `https://www.tiktok.com/@${SITE.tiktokHandle}`;
