@@ -4,61 +4,71 @@ import { useEffect, useState } from "react";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import { AnimatedSection, AnimatedItem } from "../ui/AnimatedSection";
 import EyebrowBadge from "../ui/EyebrowBadge";
-import { SITE } from "@/lib/site";
 
-/* WordPress REST API から取得する記事の型 */
+const BLOG = "https://renchicun4.com";
+
 type WPPost = {
   id: number;
   link: string;
   title: { rendered: string };
-  excerpt: { rendered: string };
   _embedded?: {
     "wp:featuredmedia"?: Array<{
       source_url?: string;
-      media_details?: { sizes?: { medium_large?: { source_url: string }; medium?: { source_url: string } } };
+      media_details?: {
+        sizes?: {
+          medium_large?: { source_url: string };
+          medium?: { source_url: string };
+        };
+      };
     }>;
   };
 };
 
-/* サムネイルURLを安全に取り出すヘルパー */
+type Article = {
+  title: string;
+  kicker: string;
+  link: string;
+  img: string | null;
+};
+
 function thumb(post: WPPost): string | null {
-  const media = post._embedded?.["wp:featuredmedia"]?.[0];
+  const m = post._embedded?.["wp:featuredmedia"]?.[0];
   return (
-    media?.media_details?.sizes?.medium_large?.source_url ??
-    media?.media_details?.sizes?.medium?.source_url ??
-    media?.source_url ??
+    m?.media_details?.sizes?.medium_large?.source_url ??
+    m?.media_details?.sizes?.medium?.source_url ??
+    m?.source_url ??
     null
   );
 }
 
-/* HTMLタグを除去してプレーンテキストに */
 function stripHtml(html: string) {
-  return html.replace(/<[^>]*>/g, "").replace(/&[a-z]+;/gi, " ").trim();
+  return html.replace(/<[^>]*>/g, "").replace(/&[a-z#0-9]+;/gi, " ").trim();
 }
 
-type Article = { title: string; kicker: string; read: string; link: string; img: string | null };
+/* リンクを確実にhttpsにする */
+function ensureHttps(url: string): string {
+  return url.replace(/^http:\/\//, "https://");
+}
 
-/* フォールバック記事（APIが取得できないとき表示） */
 const FALLBACK: Article[] = [
-  { title: "ブガッティ、パガーニ、ケーニグセグが集う聖地", kicker: "聖地巡礼", read: "8分", link: `https://${SITE.blog}`, img: null },
-  { title: "ハイパーカーを手に入れるために本当に必要なこと", kicker: "オーナーシップ", read: "6分", link: `https://${SITE.blog}`, img: null },
-  { title: "W16エンジンが「二度と作られない記念碑」である理由", kicker: "エンジニアリング", read: "10分", link: `https://${SITE.blog}`, img: null },
+  { title: "ブガッティ、パガーニ、ケーニグセグが集う聖地", kicker: "聖地巡礼", link: BLOG, img: null },
+  { title: "ハイパーカーを手に入れるために本当に必要なこと", kicker: "オーナーシップ", link: BLOG, img: null },
+  { title: "W16エンジンが「二度と作られない記念碑」である理由", kicker: "エンジニアリング", link: BLOG, img: null },
 ];
 
 export default function Articles() {
   const [posts, setPosts] = useState<Article[] | null>(null);
 
   useEffect(() => {
-    const API = "/api/posts"; // サーバー経由でCORSを回避
-    fetch(API)
+    fetch("/api/posts")
       .then((r) => { if (!r.ok) throw new Error("API error"); return r.json(); })
       .then((data: WPPost[]) => {
+        if (!Array.isArray(data) || data.length === 0) throw new Error("empty");
         setPosts(
           data.map((p) => ({
             title: stripHtml(p.title.rendered),
             kicker: "記事",
-            read: "読む",
-            link: p.link,
+            link: ensureHttps(p.link), // httpをhttpsに修正
             img: thumb(p),
           }))
         );
@@ -86,7 +96,7 @@ export default function Articles() {
             </AnimatedItem>
           </div>
           <AnimatedItem>
-            <a href={`https://${SITE.blog}`} target="_blank" rel="noopener noreferrer"
+            <a href={BLOG} target="_blank" rel="noopener noreferrer"
               className="group inline-flex items-center gap-1.5 text-sm text-[var(--gold)]">
               ブログをすべて読む
               <ArrowUpRight size={15} weight="bold"
@@ -104,13 +114,9 @@ export default function Articles() {
                 {/* サムネイル */}
                 <div className="relative aspect-[16/9] w-full overflow-hidden bg-[var(--surface-nested)]">
                   {p.img ? (
-                    <img
-                      src={p.img}
-                      alt={p.title}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
+                    <img src={p.img} alt={p.title}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   ) : (
-                    /* 画像なしのとき：シルバーグラデーションのプレースホルダー */
                     <div className="flex h-full w-full items-center justify-center"
                       style={{ background: "linear-gradient(135deg,#131316 0%,#1e1e24 50%,#0f0f12 100%)" }}>
                       <span className="font-mono text-xs uppercase tracking-widest text-[var(--muted)]/40">
@@ -118,7 +124,6 @@ export default function Articles() {
                       </span>
                     </div>
                   )}
-                  {/* カテゴリバッジ（画像の上に重ねる） */}
                   <span className="absolute left-3 top-3 rounded-full border border-[var(--hairline)] bg-black/60 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-[var(--gold)] backdrop-blur-md">
                     {p.kicker}
                   </span>
@@ -130,12 +135,11 @@ export default function Articles() {
                     {p.title}
                   </h3>
                   <div className="mt-5 flex items-center justify-between">
-                    <span className="text-xs text-[var(--muted)]">{p.read}</span>
+                    <span className="text-xs text-[var(--muted)]">記事を読む</span>
                     <ArrowUpRight size={16} weight="bold"
                       className="text-[var(--muted)] transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[var(--gold)]" />
                   </div>
                 </div>
-
               </a>
             </AnimatedItem>
           ))}

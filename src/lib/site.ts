@@ -1,7 +1,7 @@
 export const SITE = {
   name: "Paradosxia Cars",
   tagline: "ハイパーカーの世界へ。",
-  blog: "https://renchicun4.com",
+  blog: "renchicun4.com",
   email: "hello@paradosxia.com",
   tiktokHandle: "paradoxia.cars",
   tiktokVideos: [] as string[],
