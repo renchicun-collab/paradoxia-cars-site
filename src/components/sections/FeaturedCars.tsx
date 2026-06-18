@@ -4,34 +4,10 @@ import { AnimatedSection, AnimatedItem } from "../ui/AnimatedSection";
 import EyebrowBadge from "../ui/EyebrowBadge";
 
 const cars = [
-  {
-    marque: "Bugatti",
-    model: "La Voiture Noire",
-    note: "1台のみ製造。報道では約14億円。史上最高額で売れた新車。",
-    spec: "1,479 hp · W16",
-    img: "/cars/bugatti.jpg",
-  },
-  {
-    marque: "Pagani",
-    model: "Huayra Codalunga",
-    note: "5台のみ。モデナで職人の手によって生み出されたロングテール。",
-    spec: "840 hp · V12",
-    img: "/cars/pagani.jpg",
-  },
-  {
-    marque: "Koenigsegg",
-    model: "Jesko Absolut",
-    note: "理論上の最高速度500km/h超を目指して設計されたマシン。",
-    spec: "1,600 hp · V8",
-    img: "/cars/koenigsegg.jpg",
-  },
-  {
-    marque: "Rolls-Royce",
-    model: "Boat Tail",
-    note: "3台のみの特注コーチビルト。価格は非公開のまま。",
-    spec: "ビスポーク · V12",
-    img: "/cars/rolls-royce.jpg",
-  },
+  { marque: "Bugatti", model: "La Voiture Noire", note: "1台のみ製造。報道では約14億円。史上最高額で売れた新車。", spec: "1,479 hp · W16", units: "生産1台", img: "/cars/bugatti.jpg" },
+  { marque: "Pagani", model: "Huayra Codalunga", note: "5台のみ。モデナで職人の手によって生み出されたロングテール。", spec: "840 hp · V12", units: "生産5台", img: "/cars/pagani.jpg" },
+  { marque: "Koenigsegg", model: "Jesko Absolut", note: "理論上の最高速度500km/h超を目指して設計されたマシン。", spec: "1,600 hp · V8", units: "限定生産", img: "/cars/koenigsegg.jpg" },
+  { marque: "Rolls-Royce", model: "Boat Tail", note: "3台のみの特注コーチビルト。価格は非公開のまま。", spec: "ビスポーク · V12", units: "生産3台", img: "/cars/rolls-royce.jpg" },
 ];
 
 export default function FeaturedCars() {
@@ -40,10 +16,10 @@ export default function FeaturedCars() {
       <div className="mx-auto max-w-[1400px]">
         <AnimatedSection className="mb-14 max-w-[44ch]">
           <AnimatedItem>
-            <EyebrowBadge>注目のハイパーカー</EyebrowBadge>
+            <EyebrowBadge spec="№03 · 4 MODELS">注目のハイパーカー</EyebrowBadge>
           </AnimatedItem>
           <AnimatedItem>
-            <h2 className="mt-5 text-3xl font-semibold tracking-tight md:text-5xl">
+            <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-5xl">
               台数で語られる、究極の機械たち。
             </h2>
           </AnimatedItem>
@@ -59,7 +35,6 @@ export default function FeaturedCars() {
             <AnimatedItem key={c.model}>
               <article className="card-surface group h-full overflow-hidden transition-transform duration-500 hover:-translate-y-1">
 
-                {/* 車の画像 */}
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--surface-nested)]">
                   <img
                     src={c.img}
@@ -67,15 +42,18 @@ export default function FeaturedCars() {
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <span className="absolute left-3 top-3 rounded-full border border-[var(--hairline)] bg-black/50 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-[var(--gold)] backdrop-blur-md">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/0 to-black/0" />
+                  <span className="absolute left-3 top-3 rounded-sm border border-[var(--hairline)] bg-black/50 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-[var(--gold)] backdrop-blur-md">
                     {c.marque}
+                  </span>
+                  <span className="absolute right-3 top-3 flex items-center gap-1.5 rounded-sm border border-[var(--danger)]/40 bg-black/50 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-[var(--danger)] backdrop-blur-md">
+                    <span className="h-1 w-1 bg-[var(--danger)]" />
+                    {c.units}
                   </span>
                 </div>
 
-                {/* テキスト */}
                 <div className="p-6">
-                  <h3 className="text-lg font-semibold tracking-tight">{c.model}</h3>
+                  <h3 className="text-lg font-bold tracking-tight">{c.model}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{c.note}</p>
                   <div className="gold-rule my-4 opacity-50" />
                   <p className="font-mono text-xs text-[var(--muted)]">{c.spec}</p>

@@ -20,7 +20,7 @@ export default function Contact() {
   };
 
   const field =
-    "w-full rounded-xl border border-[var(--hairline)] bg-[var(--surface-nested)] px-4 py-3 text-sm text-[var(--foreground)] outline-none transition-colors placeholder:text-[var(--muted)]/70 focus:border-[var(--gold)]";
+    "w-full rounded-sm border border-[var(--hairline)] bg-[var(--surface-nested)] px-4 py-3 text-sm text-[var(--foreground)] outline-none transition-colors placeholder:text-[var(--muted)]/70 focus:border-[var(--gold)]";
 
   return (
     <section id="contact" className="relative overflow-hidden px-6 py-24 md:px-8 md:py-32">
@@ -33,7 +33,7 @@ export default function Contact() {
         className="relative mx-auto grid max-w-[1100px] grid-cols-1 gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20"
       >
         <div>
-          <EyebrowBadge>お問い合わせ</EyebrowBadge>
+          <EyebrowBadge spec="№06 · CONTACT">お問い合わせ</EyebrowBadge>
           <h2 className="mt-5 text-3xl font-semibold leading-[1.15] tracking-tight md:text-5xl">
             情報提供、コラボ、<br />車の話、なんでも。
           </h2>

@@ -15,11 +15,12 @@ export default function Hero() {
         <Spline scene={SITE.splineScene} onLoad={() => setLoaded(true)} />
       </div>
 
+      {/* ガレージの夜：闇からスポットライトが落ちるようなビネット */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(120% 90% at 50% 10%, transparent 40%, rgba(8,8,9,0.55) 100%), linear-gradient(to top, rgba(8,8,9,0.92) 0%, transparent 46%)",
+            "radial-gradient(110% 80% at 50% 8%, transparent 38%, rgba(13,15,20,0.6) 100%), linear-gradient(to top, rgba(13,15,20,0.95) 0%, transparent 48%)",
         }}
       />
 
@@ -30,20 +31,20 @@ export default function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={loaded ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.1, duration: 0.7 }}
-              className="mb-5 text-[11px] font-medium uppercase tracking-[0.32em] text-[var(--gold)]"
+              className="spec-line mb-5"
             >
-              ハイパーカーの世界 — The World of the Hypercar
+              №01 · THE WORLD OF THE HYPERCAR
             </motion.p>
 
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={loaded ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="max-w-[16ch] text-4xl font-semibold leading-[1.1] tracking-tight md:text-6xl lg:text-7xl"
+              className="max-w-[16ch] text-4xl font-bold leading-[1.1] tracking-tight md:text-6xl lg:text-7xl"
             >
-              地球上で最も<br />
-              希少な車たちが、<br />
-              <span className="gold-gradient-text">焦点を結ぶ。</span>
+              世界に数台しか<br />
+              存在しない、<br />
+              <span className="gold-gradient-text">異常な一台を。</span>
             </motion.h1>
 
             <motion.p
@@ -53,8 +54,7 @@ export default function Hero() {
               className="mt-6 max-w-[46ch] text-base leading-relaxed text-[var(--muted)] md:text-lg"
             >
               ブガッティ、パガーニ、ケーニグセグ、フェラーリ。<br />
-              ほとんどの人が一生目にすることのない車と、<br />
-              それを所有する人々の物語。
+              生産台数が片手で収まる車だけを、深く掘り下げる。
             </motion.p>
 
             <motion.div
@@ -91,12 +91,12 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-[var(--background)]"
           >
-            <span className="mb-6 text-sm font-semibold uppercase tracking-[0.32em] text-[var(--foreground)]">
+            <span className="mb-6 text-sm font-bold uppercase tracking-[0.32em] text-[var(--foreground)]">
               Parados<span className="text-[var(--gold)]">x</span>ia
             </span>
-            <div className="h-[2px] w-44 overflow-hidden rounded-full bg-white/10">
+            <div className="h-[2px] w-44 overflow-hidden bg-white/10">
               <motion.div
-                className="h-full w-1/2 rounded-full bg-gradient-to-r from-[var(--gold-light)] to-[var(--gold)]"
+                className="h-full w-1/2 bg-gradient-to-r from-[var(--gold-light)] to-[var(--gold)]"
                 animate={{ x: ["-100%", "200%"] }}
                 transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut" }}
               />

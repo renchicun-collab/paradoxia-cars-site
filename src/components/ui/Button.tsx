@@ -13,10 +13,11 @@ type Props = {
 };
 
 export default function Button({ children, href, onClick, variant = "primary", showArrow = false, className = "" }: Props) {
-  const base = "group inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-medium tracking-tight transition-all duration-300";
+  /* 直線基調（角丸最小限）。クロームのグラデーションは押した瞬間に締まる感覚を出す */
+  const base = "group inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3.5 text-sm font-medium tracking-tight transition-all duration-300";
   const styles = variant === "primary"
-    ? "bg-gradient-to-r from-[var(--gold-light)] to-[var(--gold)] text-[#0a0a0b] hover:shadow-[var(--silver-glow)]"
-    : "border border-[var(--hairline)] bg-white/[0.02] text-[var(--foreground)] hover:bg-white/[0.06]";
+    ? "bg-gradient-to-r from-[var(--gold-light)] to-[var(--gold)] text-[#0d0f14] hover:shadow-[var(--chrome-glow)]"
+    : "border border-[var(--hairline)] bg-white/[0.02] text-[var(--foreground)] hover:border-[var(--gold-deep)] hover:bg-white/[0.05]";
 
   const inner = (
     <>

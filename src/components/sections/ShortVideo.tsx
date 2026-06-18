@@ -28,7 +28,7 @@ export default function ShortVideo() {
       <div className="mx-auto max-w-[1400px]">
         <AnimatedSection className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-[42ch]">
-            <AnimatedItem><EyebrowBadge>TikTok</EyebrowBadge></AnimatedItem>
+            <AnimatedItem><EyebrowBadge spec="№05 · SHORT FORM">TikTok</EyebrowBadge></AnimatedItem>
             <AnimatedItem>
               <h2 className="mt-5 text-3xl font-semibold tracking-tight md:text-5xl">
                 60秒で味わう、非日常の世界。
@@ -38,7 +38,7 @@ export default function ShortVideo() {
               <p className="mt-4 text-base leading-relaxed text-[var(--muted)] md:text-lg">
                 {pinned
                   ? "チャンネルから厳選した動画。詳細はブログで。"
-                  : "チャンネルの最新動画を自動で表示。詳細はブログで深掘りしています。"}
+                  : "最新の動画をチャンネルから直接お届け。深い話はブログで。"}
               </p>
             </AnimatedItem>
           </div>

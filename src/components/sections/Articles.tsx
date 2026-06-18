@@ -83,7 +83,7 @@ export default function Articles() {
       <div className="mx-auto max-w-[1400px]">
         <AnimatedSection className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-[42ch]">
-            <AnimatedItem><EyebrowBadge>最新記事</EyebrowBadge></AnimatedItem>
+            <AnimatedItem><EyebrowBadge spec="№04 · ARTICLES">最新記事</EyebrowBadge></AnimatedItem>
             <AnimatedItem>
               <h2 className="mt-5 text-3xl font-semibold tracking-tight md:text-5xl">
                 深掘り。ホットテイクではなく。
@@ -124,7 +124,7 @@ export default function Articles() {
                       </span>
                     </div>
                   )}
-                  <span className="absolute left-3 top-3 rounded-full border border-[var(--hairline)] bg-black/60 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-[var(--gold)] backdrop-blur-md">
+                  <span className="absolute left-3 top-3 rounded-sm border border-[var(--hairline)] bg-black/60 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-[var(--gold)] backdrop-blur-md">
                     {p.kicker}
                   </span>
                 </div>

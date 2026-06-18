@@ -1,36 +1,40 @@
 @import "tailwindcss";
 
 /* ============================================================
-   PARADOSXIA CARS — シルバー×黒 デザイントークン
+   PARADOSXIA CARS — "ガレージの夜" デザインシステム
+   闇の中で一台だけスポットライトを浴びる瞬間。
    ============================================================ */
 
 :root {
-  /* ベースカラー */
-  --background: #080809;
-  --surface: #111113;
-  --surface-nested: #161618;
-  --foreground: #f0f0f2;
-  --muted: #888892;
-  --hairline: rgba(255, 255, 255, 0.07);
+  /* ベース：完全な黒ではなく、深いチャコール・インディゴ */
+  --background: #0d0f14;
+  --surface: #15181f;
+  --surface-nested: #1a1e26;
+  --foreground: #f5f6f8;
+  --muted: #7a8089;
+  --hairline: rgba(255, 255, 255, 0.06);
 
-  /* シルバーアクセント */
-  --gold: #c0c0cc;          /* メインシルバー */
-  --gold-light: #e8e8f0;    /* ハイライトシルバー */
-  --gold-deep: #7a7a88;     /* ディープシルバー */
+  /* クロームシルバー（メインアクセント） */
+  --gold: #c9ced6;
+  --gold-light: #eef0f3;
+  --gold-deep: #888e98;
 
-  /* ニューモーフィックシャドウ（ダーク版） */
+  /* テールランプレッド（危険色・極小面積のみ使用） */
+  --danger: #ff3b30;
+  --danger-dim: rgba(255, 59, 48, 0.16);
+
   --card-shadow:
-    0px 0.7px 0.7px -0.67px rgba(0,0,0,.6),
-    0px 1.8px 1.8px -1.33px rgba(0,0,0,.55),
-    0px 3.6px 3.6px -2px    rgba(0,0,0,.50),
-    0px 6.9px 6.9px -2.67px rgba(0,0,0,.44),
-    0px 13.6px 13.6px -3.33px rgba(0,0,0,.36),
-    0px 30px 30px -4px       rgba(0,0,0,.30),
-    inset 0px 1px 0px 0px    rgba(255,255,255,.07);
+    0px 0.7px 0.7px -0.67px rgba(0,0,0,.65),
+    0px 1.8px 1.8px -1.33px rgba(0,0,0,.58),
+    0px 3.6px 3.6px -2px    rgba(0,0,0,.52),
+    0px 6.9px 6.9px -2.67px rgba(0,0,0,.46),
+    0px 13.6px 13.6px -3.33px rgba(0,0,0,.38),
+    0px 30px 30px -4px       rgba(0,0,0,.32),
+    inset 0px 1px 0px 0px    rgba(255,255,255,.06);
 
-  --silver-glow:
-    0px 8px 30px -6px rgba(192,192,204,.20),
-    inset 0px 1px 0px 0px rgba(232,232,240,.15);
+  --chrome-glow:
+    0px 0px 40px -8px rgba(201,206,214,.25),
+    inset 0px 1px 0px 0px rgba(238,240,243,.18);
 }
 
 @theme inline {
@@ -41,8 +45,9 @@
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
   --color-gold-deep: var(--gold-deep);
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-noto-serif-jp);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-zen-kaku);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -53,30 +58,32 @@ html { scroll-behavior: auto; }
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), "Noto Serif JP", system-ui, sans-serif;
+  font-family: var(--font-geist-sans), "Zen Kaku Gothic New", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* 見出し用セリフ体 */
+/* 見出し：角の効いた工業的な和文ゴシック */
 h1, h2, h3 {
-  font-family: "Noto Serif JP", Georgia, serif;
+  font-family: "Zen Kaku Gothic New", var(--font-geist-sans), system-ui, sans-serif;
+  font-weight: 700;
 }
 
 .card-surface {
   background: var(--surface);
-  border-radius: 20px;
+  border-radius: 4px; /* 工業的な直線基調。丸すぎる角は使わない */
   box-shadow: var(--card-shadow);
   border: 1px solid var(--hairline);
 }
 
 .card-surface-nested {
   background: var(--surface-nested);
-  border-radius: 16px;
+  border-radius: 4px;
   box-shadow: var(--card-shadow);
 }
 
 .text-gold { color: var(--gold); }
+.text-danger { color: var(--danger); }
 
 .gold-gradient-text {
   background: linear-gradient(90deg, var(--gold-light), var(--gold), var(--gold-deep));
@@ -89,7 +96,24 @@ h1, h2, h3 {
 
 .gold-rule {
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+/* シグネチャー要素：型式・台数表記ライン */
+.spec-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.spec-line::before {
+  content: "";
+  width: 14px;
+  height: 1px;
+  background: var(--danger);
 }
 
 ::-webkit-scrollbar { width: 0; height: 0; }
